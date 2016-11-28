@@ -9,7 +9,7 @@ function Person() {
 }
 
 Person.prototype.greet = function() {
-	console.log('Hello ' + this.firstname + ' ' + this.lastname);
+	console.log(`Hello ${this.firstname} ${this.lastname}`);
 }
 
 function Policeman() {
