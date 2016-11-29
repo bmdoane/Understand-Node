@@ -1,6 +1,6 @@
 'use strict'
 
-// Using es6 classes you can avaid using util.inherits
+// Using es6 classes you can avoid using util.inherits
 const EventEmitter = require('events')
 
 // Using a class expression
