@@ -24,7 +24,8 @@ app.use('/', (req, res, next) => {
 
 // Responds to HTTP request with method get and map to URL '/' 
 app.get('/', (req, res) => {
-	res.send('<html><head><link href=assets/style.css type=text/css rel=stylesheet /></head><body><h1>Hello Nurse!</h1></body></html>')
+	// Express looks to views folder, file index, with ejs extension
+	res.render('index')
 })
 
 // : tells the JavaScript code in express that what follows could be anything
