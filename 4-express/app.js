@@ -9,6 +9,11 @@ const port = process.env.PORT || 3000
 // MIDDLEWARE
 // Any files in public folder become available to routes with /assets 
 app.use('/assets', express.static(__dirname + '/public'))
+
+// Template Engine - 2nd arg is file extension (where to find)
+// By default, Express will look for static files in folder named views
+app.set('view engine', 'ejs')
+
 // Log url in console with each page change
 app.use('/', (req, res, next) => {
 	console.log(`Request URL: ${req.url}`)
