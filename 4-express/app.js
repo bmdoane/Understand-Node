@@ -30,7 +30,9 @@ app.get('/', (req, res) => {
 
 // : tells the JavaScript code in express that what follows could be anything
 app.get('/employee/:id', (req, res) => {
-	res.send(`<html><head></head><body><h1>Employee: ${req.params.id}</h1></body></html>`)
+	// Render method on ejs, running along express, can take a JS object
+	// ID is variable for template (employee.ejs)
+	res.render('employee', { ID: req.params.id })
 })
 
 // Get json data
