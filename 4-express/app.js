@@ -9,6 +9,11 @@ const port = process.env.PORT || 3000
 // MIDDLEWARE
 // Any files in public folder become available to routes with /assets 
 app.use('/assets', express.static(__dirname + '/public'))
+
+// Template Engine - 2nd arg is file extension (where to find)
+// By default, Express will look for static files in folder named views
+app.set('view engine', 'ejs')
+
 // Log url in console with each page change
 app.use('/', (req, res, next) => {
 	console.log(`Request URL: ${req.url}`)
@@ -19,12 +24,15 @@ app.use('/', (req, res, next) => {
 
 // Responds to HTTP request with method get and map to URL '/' 
 app.get('/', (req, res) => {
-	res.send('<html><head><link href=assets/style.css type=text/css rel=stylesheet /></head><body><h1>Hello Nurse!</h1></body></html>')
+	// Express looks to views folder, file index, with ejs extension
+	res.render('index')
 })
 
 // : tells the JavaScript code in express that what follows could be anything
 app.get('/employee/:id', (req, res) => {
-	res.send(`<html><head></head><body><h1>Employee: ${req.params.id}</h1></body></html>`)
+	// Render method on ejs, running along express, can take a JS object
+	// ID is variable for template (employee.ejs)
+	res.render('employee', { ID: req.params.id })
 })
 
 // Get json data
