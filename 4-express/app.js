@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 app.get('/employee/:id', (req, res) => {
 	// Render method on ejs, running along express, can take a JS object
 	// ID is variable for template (employee.ejs)
-	res.render('employee', { ID: req.params.id })
+	res.render('employee', { ID: req.params.id, Qstr: req.query.qstr })
 })
 
 // Get json data
