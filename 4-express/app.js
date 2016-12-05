@@ -1,7 +1,7 @@
 'use strict'
 
 const express = require('express')
-const { urlencoded } = require('body-parser')
+const { urlencoded, json } = require('body-parser')
 const app = express()
 
 const port = process.env.PORT || 3000
@@ -10,6 +10,8 @@ const port = process.env.PORT || 3000
 // MIDDLEWARE
 // create application/x-www-form-urlencoded parser
 const urlencodedParser = urlencoded({ extended: false })
+// create application/json parser
+const jsonParser = json()
 // Any files in public folder become available to routes with /assets 
 app.use('/assets', express.static(__dirname + '/public'))
 
@@ -37,9 +39,15 @@ app.get('/employee/:id', (req, res) => {
 	// ID is variable for template (employee.ejs)
 	res.render('employee', { ID: req.params.id, Qstr: req.query.qstr })
 })
-
+// Post form data
 app.post('/employee', urlencodedParser, (req, res) => {
 	res.send('Thank you!')
+	console.log("req.body.firstName", req.body.firstName)
+	console.log("req.body.lastName", req.body.lastName)
+})
+// Post json data - this example logs name on index page load 
+app.post('/employeejson', jsonParser, (req, res) => {
+	res.send('Thank you for the JSON data!')
 	console.log("req.body.firstName", req.body.firstName)
 	console.log("req.body.lastName", req.body.lastName)
 })
