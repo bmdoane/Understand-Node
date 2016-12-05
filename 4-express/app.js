@@ -1,12 +1,15 @@
 'use strict'
 
 const express = require('express')
+const { urlencoded } = require('body-parser')
 const app = express()
 
 const port = process.env.PORT || 3000
 
 
 // MIDDLEWARE
+// create application/x-www-form-urlencoded parser
+const urlencodedParser = urlencoded({ extended: false })
 // Any files in public folder become available to routes with /assets 
 app.use('/assets', express.static(__dirname + '/public'))
 
@@ -33,6 +36,12 @@ app.get('/employee/:id', (req, res) => {
 	// Render method on ejs, running along express, can take a JS object
 	// ID is variable for template (employee.ejs)
 	res.render('employee', { ID: req.params.id, Qstr: req.query.qstr })
+})
+
+app.post('/employee', urlencodedParser, (req, res) => {
+	res.send('Thank you!')
+	console.log("req.body.firstName", req.body.firstName)
+	console.log("req.body.lastName", req.body.lastName)
 })
 
 // Get json data
