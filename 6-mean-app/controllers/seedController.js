@@ -3,23 +3,24 @@
 const Todos = require('../models/todoModel')
 
 module.exports = function(app) {
+	// You can put endpoint in browser url to see data
 	app.get('/api/seedTodos', (req, res) => {
 		// Seed database
 		let starterTodos = [
 			{
-				userName: 'Jerry Tarkenian',
+				userName: 'test',
 		    todo: 'mow the pool',
 		    isDone: false,
 		    hasAttachment: false
 			},
 			{
-				userName: 'Bobby Knight',
+				userName: 'test',
 		    todo: 'feed the car',
 		    isDone: false,
 		    hasAttachment: false
 			},
 			{
-				userName: 'John Thompson',
+				userName: 'test',
 		    todo: 'pick up the beer',
 		    isDone: false,
 		    hasAttachment: false
